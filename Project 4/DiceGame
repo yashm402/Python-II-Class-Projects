@@ -1,0 +1,128 @@
+import random
+
+print(" Welcome to Dice Wars. You and the computer will compete in a game of war.\n "
+          "Each round you will bet a certain amouunt of chips and roll a specified amount of die.\n "
+          "The winner of the round is determined by who has the highest sum on their dice roll. You will start with 100 chips. Good Luck!\n")
+class dice:
+
+    def __init__(self, sides):
+        self.sides = sides ###makes sides parameter
+        self.rollvalue = 0
+
+    def __str__(self):
+        return "There are "+ str(self.sides)+ " sides per dice.\n"
+
+    def __add__(self, other):
+        return self.rollvalue + other.rollvalue
+
+    def __eq__(self, other):
+        return print()
+
+    def roll_dice(self):
+        self.rollvalue = random.randint(1,self.sides) ###assigning a random value that
+        print("Dice Rolled", self.rollvalue)
+
+class CupOfDice:
+
+    def __init__(self, sides, numDice):
+        self.numDice = numDice
+        self.sides = sides
+        self.dice_cup = []
+        self.sum = 0
+
+    def __add__(self, other):
+        #print(str(self.sum) + str(other.sum))
+        return self.sum + other.sum
+
+    def cup(self):
+        for i in range(self.numDice):
+            self.dice_cup.append(dice(self.sides))
+
+    def roll_cup(self):
+        for i in range(len(self.dice_cup)):
+            self.dice_cup[i].roll_dice()
+            # i.roll_dice()    ###calling roll_dice function from above and passing values into the cup
+            # print("You rolled", i.rollvalue)
+            self.sum += self.dice_cup[i].rollvalue
+            # print(i.rollvalue)
+        #self.sum == self.sum + i.rollvalue      ###adding rollvalue to the sum in the cup
+
+        # for i in self.dice_cup:
+        #     i.roll_dice()
+        #     print("CPU rolled", i.rollvalue)
+
+    def __eq__(self, other):
+        if self.sum == other.sum:
+            return True
+
+    def __ne__(self, other):
+        if self.sum != other.sum:
+            return True
+
+    def __lt__(self, other):
+        if self.sum < other.sum:
+            return True
+
+    def __gt__(self, other):
+        if self.sum > other.sum:
+            return True
+    def __le__(self, other):
+        if self.sum <= other.sum:
+            return True
+
+    def __ge__(self, other):
+        if self.sum >= other.sum:
+            return True
+
+    def __str__(self):
+        return "Our cup has " + str(self.numDice) + " dice"
+
+
+
+def main():
+    # print(" Welcome to Dice Wars. You and the computer will compete in a game of war.\n "
+    #       "Each round you will bet a certain amouunt of chips and roll a specified amount of die.\n "
+    #       "The winner of the round is determined by who has the highest sum on their dice roll. You will start with 100 chips. Good Luck!\n")
+    sides = int(input("How many sides per dice would you like?\n"))
+    ##Prompt user to enter dice and sides of die
+    numDice = int(input("How many dice would you like to roll?\n"))
+    bet = int(input("How many chips would you like to bet?\n"))
+
+    chip_count = 100
+
+    ###Integrate for loop
+    a = CupOfDice(sides, numDice)  ###calls dice class and passes sides through
+    a.cup()
+    a.roll_cup()
+    print("Your total roll is", a.sum)
+    b = CupOfDice(sides, numDice)  ###calls dice class and passes sides through
+    b.cup()
+    b.roll_cup()
+    print("CPU total roll is", b.sum)
+    # a == b
+    if a > b:
+        print ("Congrats! You win")
+        chip_count += bet
+        #print("You have", chip_count)
+    elif a < b:
+        print("Too Bad! You Lose")
+        chip_count -= bet
+        #print("You have", chip_count)
+    elif a == b:
+        print("It's a tie")
+
+    print("You have", chip_count, "chips\n")
+    if chip_count > 0:
+        again = (input("Would you like to play again? Type Y to play again or any other key to exit "))
+        if again == 'y'or 'Y':
+            return main()
+        # if again != 'y' or 'Y':
+        #     print("Thanks for playing!")
+        #     exit()
+    else:
+        print("Thanks for playing!")
+        exit()
+main()
+
+
+
