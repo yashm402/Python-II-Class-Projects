@@ -31,7 +31,7 @@ class CupOfDice:
         self.sum = 0
 
     def __add__(self, other):
-        #print(str(self.sum) + str(other.sum))
+
         return self.sum + other.sum
 
     def cup(self):
@@ -41,15 +41,9 @@ class CupOfDice:
     def roll_cup(self):
         for i in range(len(self.dice_cup)):
             self.dice_cup[i].roll_dice()
-            # i.roll_dice()    ###calling roll_dice function from above and passing values into the cup
-            # print("You rolled", i.rollvalue)
-            self.sum += self.dice_cup[i].rollvalue
-            # print(i.rollvalue)
-        #self.sum == self.sum + i.rollvalue      ###adding rollvalue to the sum in the cup
 
-        # for i in self.dice_cup:
-        #     i.roll_dice()
-        #     print("CPU rolled", i.rollvalue)
+            self.sum += self.dice_cup[i].rollvalue
+
 
     def __eq__(self, other):
         if self.sum == other.sum:
@@ -80,9 +74,7 @@ class CupOfDice:
 
 
 def main():
-    # print(" Welcome to Dice Wars. You and the computer will compete in a game of war.\n "
-    #       "Each round you will bet a certain amouunt of chips and roll a specified amount of die.\n "
-    #       "The winner of the round is determined by who has the highest sum on their dice roll. You will start with 100 chips. Good Luck!\n")
+
     sides = int(input("How many sides per dice would you like?\n"))
     ##Prompt user to enter dice and sides of die
     numDice = int(input("How many dice would you like to roll?\n"))
@@ -103,11 +95,9 @@ def main():
     if a > b:
         print ("Congrats! You win")
         chip_count += bet
-        #print("You have", chip_count)
     elif a < b:
         print("Too Bad! You Lose")
         chip_count -= bet
-        #print("You have", chip_count)
     elif a == b:
         print("It's a tie")
 
