@@ -1,0 +1,124 @@
+from math import pi
+
+print("*For this program, assume all shapes are regular.*\n")
+
+class Shapes:
+    """This class is the umbrella class for shapes, it will be used in the specific shapes below"""
+    def __init__(self):
+        self.height = 0     ###creation of shape variables to be used
+        self.length = 0
+        self.radius = 0
+        self.sides = 0
+        self.apothem = 0
+        self.perimeter = 0
+        self.base = 0
+        self.area = 0
+
+    def area_formula(self):
+        self.area = self.height * self.length
+
+class Rectangle(Shapes):
+    def __init__(self, height, length):
+        super(Rectangle, self).__init__()
+        super(Rectangle, self).area_formula()
+        self.height = height
+        self.length = length
+        self.area = (self.height)*(self.length)     ###Creation of area method
+    def __str__(self):
+        return f'The area of this rectangle is {self.area} units squared.'
+#
+class Oval(Shapes):
+    def __init__(self, length, height):
+        super(Oval, self).__init__()
+        self.height = height
+        self.length = length
+        self.area = (.5 * (self.height) * (self.length)) * pi
+    def __str__(self):
+        return f'The area of this oval is {self.area} units squared.'
+#
+class Polygon(Shapes):
+    def __init__(self, apothem, perimeter):
+        super(Polygon, self).__init__()
+        self.apothem = apothem
+        self.perimeter = perimeter
+        self.area = (.5*(self.apothem)*(self.perimeter))
+    def __str__(self):
+        return f'The area of this regular polygon is {self.area} units squared.'''
+#
+class Square(Rectangle):
+    def __init__(self, height):
+        super(Square, self).__init__(height, height)
+        self.height = height
+        self.area = (self.height)**2
+
+    #"""Check to see if you need to put area formula in here
+    def __str__(self):
+        return f'The area of this square is {self.area} units squared.'
+#
+class Triangle(Shapes):
+    def __init__(self, base, height):
+        super(Triangle, self).__init__()
+        self.base = base
+        self.height = height
+        self.area = (.5*(self.base)*(self.height))
+    def __str__(self):
+        return f'The area of this triangle is {self.area} units squared.'''
+#
+class Pentagon(Shapes):
+    def __init__(self, apothem, perimeter):
+        super(Pentagon, self).__init__()
+        self.apothem = apothem
+        self.perimeter = perimeter
+        self.area = (.5 * (self.apothem) * (self.perimeter))
+    def __str__(self):
+        return f'The area of this pentagon is {self.area} units squared.'''
+#
+class Circle(Oval):
+    def __init__(self, radius):
+        super(Circle, self).__init__(radius, radius)
+        self.radius = radius
+   #     self.area = pi*(self.radius)**2
+    def __str__(self):
+        return f'The area of this circle is {self.area} units squared.'
+#
+class Parallelogram(Rectangle):
+    def __init__(self, height, length):
+        super(Parallelogram, self).__init__(height, length)
+        self.height = height
+        self.length = length
+    def __str__(self):
+        return f'The area of this parallelogram is {self.area} units squared.'
+#
+class Rhombus(Pentagon):
+    def __init__(self, apothem, perimeter):
+        super(Rhombus, self).__init__(apothem, perimeter)
+        self.area = (.5*(self.apothem)*(self.perimeter))
+    def __str__(self):
+        return f'The area of this rhombus is {self.area} units squared.'''
+
+
+
+def main():
+    rectangle = Rectangle(6,5)
+    print(rectangle)
+    square = Square(5)
+    print(square)
+    oval = Oval(3,4)
+    print (oval)
+    circle = Circle(3)
+    print(circle)
+    triangle = Triangle(3,5)
+    print(triangle)
+    pentagon = Pentagon(4,5)
+    print(pentagon)
+    rhombus = Rhombus(8,7)
+    print(rhombus)
+    para = Parallelogram(3,6)
+    print(para)
+    poly = Polygon(4,6)
+    print(poly)
+
+
+if __name__ == '__main__':
+    main()
+
