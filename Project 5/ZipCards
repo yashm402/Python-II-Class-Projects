@@ -1,0 +1,18 @@
+"""This Program uses a list of Suits and Values, here we take advantage of the zip function to create a list of tuples of a standard set of cards"""
+
+suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs']
+cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+suits_temp = [] ###blank list to hold the card pairs
+cards_temp = [[],[]]   ###Two empty lists to hold card and value
+
+for j in range(0, len(suits)):      ###Loops through each suit
+    # print(suits[j])
+    for i in range(0, len(cards)):
+        # print(cards[i])
+        card = [cards[i], suits[j]]
+        cards_temp[0].append(suits[j])
+        cards_temp[1].append(cards[i])
+
+deck = zip(cards_temp[1],cards_temp[0])                    ###zips the appended/assigned suit and card deck in tuple form
+
+print (list(deck))
