@@ -1,0 +1,129 @@
+
+import csv
+from tkinter import *
+import webbrowser
+import tkinter.font as tkfont
+
+tkin = Tk()    ###Used to call tk function
+tkin.geometry('1000x1000')    ###Sets size of the window
+tkin.title('Links to Food Desert Information in Colorado and More!')    ###Title of window
+myFont = tkfont.Font(family='Comic Sans', size=14, weight="bold")
+
+new = 1
+
+url = "https://www.arcgis.com/apps/Viewer/index.html?appid=96ae7380fed14e47a6fb7ddd24f432bd"
+url2 = "https://www.nal.usda.gov/fnic/dri-calculator/"
+url3 = "https://www.google.com/maps/search/grocery+stores+within+2+miles+of+me/"
+url4 = "https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf"
+url5 = "https://www.denvergov.org/Government/COVID-19-Information/Guidance-Resources/Residents/Relief-Resources-for-Residents/Food-Assistance#:~:text=Hunger%20Free%20Colorado's%20food%20resource%20hotline%20can%20be%20reached%20by,returned%20the%20next%20business%20day."
+url6 = "https://docs.google.com/spreadsheets/d/1ZNVF9u4MuQ5MLu3oxAhIBqZWhEI84igOQcKLDy43x3U/edit#gid=0"
+
+"""This function explains the program to the user"""
+def UserInfo():
+    print('\nWelcome to the Denver Metro Area Food Desert and Nutritional Information program!')
+    print(      '\n\nFood deserts are defined as “regions where people have limited access to healthful and affordable food in a socially acceptable way.”'
+                '\nThis term is not meant to imply that these regions are undesirable places to live, but rather to address the lack of accessible healthy food.'
+                '\nThey present an opportunity to create a “food oasis”, which is a term that can represent a solution. '
+                '\nSome specifications for what is defined as a food desert are as follows. '
+                '\nIn order for a region to qualify as a food desert, at least 500 people or 33% of the area\'s population must live more than one mile from a large grocery store in urban areas and more than 10 miles from a large grocery store in rural areas.'
+                '\nIt is currently estimated that 23.5 million people in the US live in areas that qualify as food deserts. Nearly half of these people are also low-income.'
+                '\nThe amount of food deserts in the United States may also be under-reported because small corner grocery stores are placed in the same category as large supermarkets.'
+                '\nHowever, these corner stores often do not sell fresh or healthy food such as fruits and vegetables. Due to a lack of transportation or financial means, people who live in food deserts may rely more heavily on fast food.'
+                '\nThis can lead to an increase in health problems in food desert regions, such as an increase in diabetes and obesity.'
+                ' Food deserts does NOT mean there is no food! '
+                '\nIt refers to a lack of easily accessible healthy and affordable food… and accessible in a socially acceptable manner!(1)')
+def instructions():
+    print(      '\nThis is an interactive '
+          'program that allows you to find information on food deserts in the Denver Metro area, nutritional information, and resources to locate government based and free food programs in the area.\n'
+          '\nA window will pop up with buttons that will connect you to a list of websites that has information on '
+          'Denver food deserts and related information.\n\nThe first button takes you to a map of food deserts in the state of Colorado.'
+          '\n  --You can zoom in on any desired area and it will give you a detailed '
+          'view of food deserts in a specified area.\nThe second button takes you to the DRI Calculator.'
+          '\n  --This will calculate daily nutrient recommendations '
+          'based on the Dietary Reference Intakes (DRIs) established by the Health and Medicine Division of the National Academies of Sciences, Engineering and Medicine.'
+          '\nThe third button searches for grocery stores within a two mile radius of you.'
+          ' \n   --Using Google maps, this provides you a list and map of grocery stores within two miles of your location.'
+          '\nThe fourth button takes you to the up-to-date USDA Dietary Guidelines for Americans.'
+          '\n   --This lengthy document provies "robust scientific reviews of the current body of evidence on key nutrition and health topics for each life stage."'
+          '\nThe fifth button directs you to government sponsored food assistance programs.'
+          '\n   --Under the "Food Assistance Program Details" header, you can learn about various food programs in Denver and apply for food assistance benefits such as SNAP, WIC, and many more.'
+          '\nThe sixth button sends you to a document that lists a comprehensive list of food pantries in Denver.'
+          '\n   --This list of over 90 food pantries provides you locations, hours, and contact information, all of which are currently operating.')
+
+
+"""This function is used to read the csv that contains the neighborhoods in Denver that have major food deserts"""
+def HoodData():
+    with open('NeighborhoodDeserts.csv', mode='r', encoding='UTF-8', newline='') as f:
+        reader = csv.reader(f)
+        data = list(reader)
+        """TODO get rid of byte order mark and clean up the list???"""
+    print("\nHere is a list of Denver neighborhoods where at least 50% of the population does not live within walking distance of a full service grocery store:")
+    print("--------------------------------------------------------------------------------------------------------------------------------------------------")
+    print(data)
+
+"""The following functions open the web browser using the web browser built in module"""
+def link1():
+    webbrowser.open(url,new=new)      ###This line passes the variable hyperlink url and parameter new in to open the desired page
+
+
+def link2():
+    webbrowser.open(url2,new=new)
+
+
+def link3():
+    webbrowser.open(url3,new=new)
+
+
+def link4():
+        webbrowser.open(url4, new=new)
+
+
+def link5():
+    webbrowser.open(url5, new=new)
+
+
+def link6():
+    webbrowser.open(url6, new=new)
+
+                        ###Creation of each button
+Btn = Button(tkin, text = "1. Click Here to view the Colorado Food Desert map",command=link1, width=70, height=5, bg='salmon', fg='khaki1')
+Btn2 = Button(tkin, text = "2. Click Here for the DRI Calculator",command=link2, width=70, height=5, bg='orange', fg='white')
+Btn3 = Button(tkin, text = "3. Click Here to Find Grocery Stores Near You",command=link3,  width=70, height=5, bg='IndianRed', fg='gold')
+Btn4 = Button(tkin, text = "4. Click Here to Read the USDA's Dietary Guidelines ",command=link4,  width=70, height=5, bg='IndianRed2', fg='LemonChiffon1')
+Btn5 = Button(tkin, text = "5. Click Here to View Denver's Food Assistance Programs",command=link5,  width=70, height=5, bg='IndianRed3', fg='LavenderBlush1')
+Btn6 = Button(tkin, text = "6. Click Here to See a List of Open Food Pantries",command=link6,  width=70, height=5, bg='PeachPuff', fg='peru')
+CloseProg = Button(tkin, text='Quit', command=quit, width=70, height=5, bg='honeydew3', fg='red')
+
+Btn['font'] = myFont        ###Initiates chosen font into each button
+Btn2['font'] = myFont
+Btn3['font'] = myFont
+Btn4['font'] = myFont
+Btn5['font'] = myFont
+Btn6['font'] = myFont
+CloseProg['font'] = myFont
+Btn.pack(padx=2, pady=10)
+Btn2.pack(padx=2, pady=10)
+Btn3.pack(padx=2, pady=10)
+Btn4.pack(padx=2, pady=10)
+Btn5.pack(padx=2, pady=10)
+Btn6.pack(padx=2, pady=10)
+CloseProg.pack(padx=2, pady=10)
+
+
+def close():
+    print("\n\nTo Exit the program, simply close the pop-up window by clicking the X on the upper right for Windows users or the X on the upper left for Mac users, or click the quit button on the bottom. Thanks for using my program!")
+
+
+UserInfo()
+HoodData()
+instructions()
+close()
+tkin.mainloop()
+
+
+###Sources
+# 1. https://www.colorado.edu/ecenter/2020/10/26/food-insecurity#:~:text=What%20is%20a%20food%20desert,lack%20of%20accessible%20healthy%20food.
+#Websites used to learn tkinter
+#https://tcl.tk/man/tcl8.6/TkCmd/colors.htm
+#https://pythonexamples.org/python-tkinter-button-change-font/
+#https://realpython.com/python-gui-tkinter/
