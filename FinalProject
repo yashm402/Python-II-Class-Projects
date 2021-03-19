@@ -5,11 +5,11 @@ import webbrowser
 import tkinter.font as tkfont
 
 tkin = Tk()    ###Used to call tk function
-tkin.geometry('1000x1000')    ###Sets size of the window
+tkin.geometry('450x500')    ###Sets size of the window
 tkin.title('Links to Food Desert Information in Colorado and More!')    ###Title of window
-myFont = tkfont.Font(family='Comic Sans', size=14, weight="bold")
+myFont = tkfont.Font(family='Comic Sans', size=9, weight="bold")   ##Sets font of my buttons
 
-new = 1
+new = 1 ###by setting new to 1, it causes the page to be opened in a new browser window in webbroswer
 
 url = "https://www.arcgis.com/apps/Viewer/index.html?appid=96ae7380fed14e47a6fb7ddd24f432bd"
 url2 = "https://www.nal.usda.gov/fnic/dri-calculator/"
@@ -36,7 +36,8 @@ def instructions():
     print(      '\nThis is an interactive '
           'program that allows you to find information on food deserts in the Denver Metro area, nutritional information, and resources to locate government based and free food programs in the area.\n'
           '\nA window will pop up with buttons that will connect you to a list of websites that has information on '
-          'Denver food deserts and related information.\n\nThe first button takes you to a map of food deserts in the state of Colorado.'
+          'Denver food deserts and related information.'
+          '\n\nThe first button takes you to a map of food deserts in the state of Colorado.'
           '\n  --You can zoom in on any desired area and it will give you a detailed '
           'view of food deserts in a specified area.\nThe second button takes you to the DRI Calculator.'
           '\n  --This will calculate daily nutrient recommendations '
@@ -53,12 +54,13 @@ def instructions():
 
 """This function is used to read the csv that contains the neighborhoods in Denver that have major food deserts"""
 def HoodData():
-    with open('NeighborhoodDeserts.csv', mode='r', encoding='UTF-8', newline='') as f:
+    with open('NeighborhoodDeserts.csv', mode='r', encoding='UTF-8=sig', newline='') as f:
         reader = csv.reader(f)
         data = list(reader)
         """TODO get rid of byte order mark and clean up the list???"""
     print("\nHere is a list of Denver neighborhoods where at least 50% of the population does not live within walking distance of a full service grocery store:")
-    print("--------------------------------------------------------------------------------------------------------------------------------------------------")
+    print("\nThe list starts with the neighborhoods that have the highest prevalence of limited grocery stores within walking distance. For example, Villa Park and DIA have no grocery\nstores within walking distance, and Auraria has 49.5% of the neighborhood within walking distance of a grocery store. ")
+    print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
     print(data)
 
 """The following functions open the web browser using the web browser built in module"""
@@ -86,13 +88,13 @@ def link6():
     webbrowser.open(url6, new=new)
 
                         ###Creation of each button
-Btn = Button(tkin, text = "1. Click Here to view the Colorado Food Desert map",command=link1, width=70, height=5, bg='salmon', fg='khaki1')
-Btn2 = Button(tkin, text = "2. Click Here for the DRI Calculator",command=link2, width=70, height=5, bg='orange', fg='white')
-Btn3 = Button(tkin, text = "3. Click Here to Find Grocery Stores Near You",command=link3,  width=70, height=5, bg='IndianRed', fg='gold')
-Btn4 = Button(tkin, text = "4. Click Here to Read the USDA's Dietary Guidelines ",command=link4,  width=70, height=5, bg='IndianRed2', fg='LemonChiffon1')
-Btn5 = Button(tkin, text = "5. Click Here to View Denver's Food Assistance Programs",command=link5,  width=70, height=5, bg='IndianRed3', fg='LavenderBlush1')
-Btn6 = Button(tkin, text = "6. Click Here to See a List of Open Food Pantries",command=link6,  width=70, height=5, bg='PeachPuff', fg='peru')
-CloseProg = Button(tkin, text='Quit', command=quit, width=70, height=5, bg='honeydew3', fg='red')
+Btn = Button(tkin, text = "1. Click Here to view the Colorado Food Desert map",command=link1, width=50, height=3, bg='salmon', fg='khaki1')
+Btn2 = Button(tkin, text = "2. Click Here for the DRI Calculator",command=link2, width=50, height=3, bg='orange', fg='white')
+Btn3 = Button(tkin, text = "3. Click Here to Find Grocery Stores Near You",command=link3,  width=50, height=3, bg='IndianRed', fg='gold')
+Btn4 = Button(tkin, text = "4. Click Here to Read the USDA's Dietary Guidelines ",command=link4,  width=50, height=3, bg='IndianRed2', fg='LemonChiffon1')
+Btn5 = Button(tkin, text = "5. Click Here to View Denver's Food Assistance Programs",command=link5,  width=50, height=3, bg='IndianRed3', fg='LavenderBlush1')
+Btn6 = Button(tkin, text = "6. Click Here to See a List of Open Food Pantries",command=link6,  width=50, height=3, bg='PeachPuff', fg='peru')
+CloseProg = Button(tkin, text='Quit', command=quit, width=50, height=3, bg='honeydew3', fg='red')
 
 Btn['font'] = myFont        ###Initiates chosen font into each button
 Btn2['font'] = myFont
