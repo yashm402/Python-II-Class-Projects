@@ -94,7 +94,7 @@ Btn3 = Button(tkin, text = "3. Click Here to Find Grocery Stores Near You",comma
 Btn4 = Button(tkin, text = "4. Click Here to Read the USDA's Dietary Guidelines ",command=link4,  width=50, height=3, bg='IndianRed2', fg='LemonChiffon1')
 Btn5 = Button(tkin, text = "5. Click Here to View Denver's Food Assistance Programs",command=link5,  width=50, height=3, bg='IndianRed3', fg='LavenderBlush1')
 Btn6 = Button(tkin, text = "6. Click Here to See a List of Open Food Pantries",command=link6,  width=50, height=3, bg='PeachPuff', fg='peru')
-CloseProg = Button(tkin, text='Quit', command=quit, width=50, height=3, bg='honeydew3', fg='red')
+CloseProg = Button(tkin, text='Quit', command=quit, width=50, height=3, bg='honeydew3', fg='gray8')
 
 Btn['font'] = myFont        ###Initiates chosen font into each button
 Btn2['font'] = myFont
